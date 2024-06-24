@@ -1,0 +1,102 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": [
+    {
+      "name": "typicode",
+      "id": "613b"
+    }
+  ],
+  "bank": [
+    {
+      "nama": "Hisbullah",
+      "noRekening": "28617367138",
+      "nominal": "700000",
+      "id": "0cef"
+    },
+    {
+      "id": "2cea",
+      "nama": "jaki",
+      "noRekening": "028271717",
+      "nominal": "1000000"
+    },
+    {
+      "id": "edbb",
+      "nama": "Kamal",
+      "noRekening": "72628272772",
+      "nominal": "5000000"
+    },
+    {
+      "id": "4007",
+      "nama": "Kamal",
+      "noRekening": "72628272772",
+      "nominal": "5000000"
+    },
+    {
+      "id": "89b0",
+      "nama": "Kamal",
+      "noRekening": "72628272772",
+      "nominal": "5000000"
+    },
+    {
+      "id": "5f6d",
+      "nama": "",
+      "noRekening": "",
+      "nominal": ""
+    },
+    {
+      "id": "7be5",
+      "nama": "",
+      "noRekening": "",
+      "nominal": ""
+    },
+    {
+      "id": "0c9b",
+      "nama": "",
+      "noRekening": "",
+      "nominal": ""
+    },
+    {
+      "id": "57be",
+      "nama": "Kamal",
+      "noRekening": "82772918",
+      "nominal": "5600000"
+    },
+    {
+      "id": "e7c3",
+      "nama": "Kamal",
+      "noRekening": "82772918",
+      "nominal": "5600000"
+    },
+    {
+      "id": "1207",
+      "nama": "Kamal",
+      "noRekening": "82772918",
+      "nominal": "5600000"
+    },
+    {
+      "id": "9140",
+      "nama": "Bilal ",
+      "noRekening": "111737287",
+      "nominal": "10990000"
+    },
+    {
+      "id": "7aa4",
+      "nama": "Daped",
+      "noRekening": "99918272772",
+      "nominal": "9999999"
+    }
+  ]
+}
