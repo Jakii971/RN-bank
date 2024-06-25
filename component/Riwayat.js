@@ -1,54 +1,37 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
-const Riwayat = (props) => {
-	return (
-		<View style={styles.container}>
-			<TouchableOpacity onPress={props.onSelect}>
-				<Image
-					source={{
-						uri: "https://ui-avatars.com/api/?name=" + props.nama,
-					}}
-					style={styles.img}
-				/>
-			</TouchableOpacity>
-			<View style={styles.infoContainer}>
-				<Text style={styles.text}>{props.nama}</Text>
-				<Text style={styles.text}>No. Rek{props.noRekening}</Text>
-				<Text style={styles.text}>Nominal TF : {props.nominal}</Text>
-			</View>
-		</View>
-	);
+const Riwayat = ({ nama, noRekening, nominal }) => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Nama: {nama}</Text>
+      <Text style={styles.text}>No Rekening: {noRekening}</Text>
+      <Text style={styles.text}>Nominal: {nominal}</Text>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-	container: {
-		flexDirection: "row",
-		padding: 20,
-		backgroundColor: "#f8f9fa",
-		borderRadius: 8,
-		margin: 10,
-		shadowColor: "#000",
-		shadowOffset: { width: 0, height: 2 },
-		shadowOpacity: 0.1,
-		shadowRadius: 8,
-		elevation: 3,
-		alignItems: "center", // Centers content vertically
-	},
-	img: {
-		width: 50,
-		height: 50,
-		borderRadius: 25, // Makes the image circular
-		marginRight: 20,
-	},
-	infoContainer: {
-		gap: 10,
-		flex: 1, // Allows the info container to take up remaining space
-	},
-	text: {
-		fontSize: 16,
-		color: "#333",
-	},
+  container: {
+    padding: 15,
+    marginVertical: 10,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3,
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  text: {
+    fontSize: 16,
+  },
 });
 
 export default Riwayat;

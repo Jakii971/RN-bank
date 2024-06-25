@@ -1,42 +1,94 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Alert, StyleSheet, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  Alert,
+  RefreshControl,
+} from "react-native";
 import axios from "axios";
 import Riwayat from "./Riwayat";
 
 const RiwayatScreen = ({ navigation }) => {
-	const [riwayats, setRiwayats] = React.useState([]);
+  const [riwayats, setRiwayats] = useState([]);
+  const [refreshing, setRefreshing] = useState(false);
 
-	useEffect(() => {
-		read();
-	}, []);
+  useEffect(() => {
+    read();
+  }, []);
 
-	const read = () => {
-		axios
-			.get("http://192.168.1.137:3000/bank")
-			.then((response) => {
-				console.log(response);
-				setRiwayats(response.data);
-				setNama("");
-				setNoRekening("");
-				setNominal("");
-				setBtn("Simpan");
-			})
-			.catch((error) => console.error("Error:", error));
-	};
+  const read = async () => {
+    try {
+      const response = await axios.get("http://192.168.0.100:3000/bank");
+      console.log("Response Data:", response.data); // Debugging log
+      setRiwayats(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      Alert.alert("Error", "Failed to fetch data from the server");
+    }
+  };
 
-	return (
-		<ScrollView>
-			{riwayats.map((riwayat) => {
-				return (
-					<Riwayat
-						nama={riwayat.nama}
-						noRekening={riwayat.noRekening}
-						nominal={riwayat.nominal}
-					/>
-				);
-			})}
-		</ScrollView>
-	);
+  const onRefresh = () => {
+    setRefreshing(true);
+    read().finally(() => setRefreshing(false));
+  };
+
+  const navigateToInputScreen = () => {
+    navigation.navigate("InputScreen");
+  };
+
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.button} onPress={navigateToInputScreen}>
+        <Text style={styles.buttonText}>Go to Input Screen</Text>
+      </TouchableOpacity>
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      >
+        {riwayats.length > 0 ? (
+          riwayats.map((riwayat) => (
+            <Riwayat
+              key={riwayat.id}
+              nama={riwayat.nama}
+              noRekening={riwayat.noRekening}
+              nominal={riwayat.nominal}
+            />
+          ))
+        ) : (
+          <Text style={styles.noDataText}>No transaction history available</Text>
+        )}
+      </ScrollView>
+    </View>
+  );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 10,
+    backgroundColor: "#f8f9fa",
+  },
+  button: {
+    backgroundColor: "#008000",
+    padding: 10,
+    borderRadius: 5,
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  noDataText: {
+    textAlign: "center",
+    fontSize: 16,
+    color: "#6c757d",
+  },
+});
 
 export default RiwayatScreen;
