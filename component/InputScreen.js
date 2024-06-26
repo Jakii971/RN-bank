@@ -25,17 +25,9 @@ const InputScreen = ({ navigation }) => {
 		setModalVisible(false);
 	};
 
-	const resetForm = () => {
-		setNama("");
-		setNoRekening("");
-		setNominal("");
-	};
-
 	const onRefresh = () => {
-		resetForm();
 		setRefreshing(false);
 	};
-
 
 	const submit = () => {
 		const data = {
@@ -45,23 +37,26 @@ const InputScreen = ({ navigation }) => {
 		};
 		if (btn === "Simpan") {
 			axios
-				.post("http://192.168.1.138:3000/bank", data)
+				.post("http://192.168.0.154:3000/bank", data)
 				.then((response) => {
 					const responseData = response.data;
-					const firstData = Array.isArray(responseData)
-						? responseData[0]
-						: null;
 
-					const namaModal = firstData ? firstData.nama : "";
-					const noRekeningModal = firstData ? firstData.noRekening : "";
-					const nominalModal = firstData ? firstData.nominal : "";
+					const namaModal = responseData.nama;
+					const noRekeningModal = responseData.noRekening;
+					const nominalModal = responseData.nominal;
+
+					console.log(
+						"nama= " + namaModal,
+						"noRekening= " + noRekeningModal,
+						"nominal= " + nominalModal
+					);
 
 					setModalVisible(true);
-					transaksiModal({
-						nama: namaModal,
-						noRekening: noRekeningModal,
-						nominal: nominalModal,
-					});
+
+					setNama(namaModal);
+					setNoRekening(noRekeningModal);
+					setNominal(nominalModal);
+
 					onRefresh();
 				})
 				.catch((error) => console.error("Gagal mengirim data:", error));
@@ -110,13 +105,14 @@ const InputScreen = ({ navigation }) => {
 					<TouchableOpacity style={styles.button} onPress={submit}>
 						<Text style={styles.buttonText}>{btn}</Text>
 					</TouchableOpacity>
+
 					<TransaksiModal
 						navigation={navigation}
 						visible={modalVisible}
 						closeModal={closeModal}
-						nama={nama}
-						noRekening={noRekening}
-						nominal={nominal}
+						namaModall={nama}
+						noRekeningModall={noRekening}
+						nominalModall={nominal}
 					/>
 				</View>
 			</ScrollView>

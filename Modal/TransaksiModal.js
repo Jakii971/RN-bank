@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, Button, Image, Modal } from "react-native";
 import axios from "axios";
 
-export default function TransaksiModal({ navigation, visible, closeModal, nama, noRekening, nominal }) {
+export default function TransaksiModal({ navigation, visible, closeModal, namaModall, noRekeningModall, nominalModall }) {
 	return (
 		<Modal
 			animationType="slide"
@@ -13,7 +13,7 @@ export default function TransaksiModal({ navigation, visible, closeModal, nama, 
 			<View style={styles.container}>
 				<Image
 					style={styles.briLogo}
-					source={require("../assets/donlod.jpg")} // Replace with BRI logo image
+					source={require("../assets/donlod.jpg")}
 				/>
 				<View style={styles.header}>
 					<Text style={styles.title}>Transaksi Berhasil</Text>
@@ -22,23 +22,23 @@ export default function TransaksiModal({ navigation, visible, closeModal, nama, 
 				<View style={styles.body}>
 					<View style={styles.detailsContainer}>
 						<Text style={styles.titlecontainer}>Total Transaksi</Text>
-						<Text style={styles.titlecontainer2}>Rp. {nominal}</Text>
+						<Text style={styles.titlecontainer2}>Rp. {nominalModall}</Text>
 						<View style={styles.titlecontainer3}>
 							<Text>No. Ref</Text>
 							<Text style={styles.title2}>rek </Text>
 						</View>
 						<View style={styles.sumber}>
 							<Text>Sumber Dana </Text>
-							<Text>{noRekening} </Text>
+							<Text>{noRekeningModall} </Text>
 						</View>
 						<View style={styles.tujuan}>
 							<Text>Tujuan</Text>
-							<Text>{nama}</Text>
+							<Text>{namaModall}</Text>
 						</View>
 						<View style={styles.line} />
 						<View style={styles.titlecontainer4}>
 							<Text>Nominal</Text>
-							<Text style={styles.title2}>Rp {nominal}</Text>
+							<Text style={styles.title2}>Rp {nominalModall}</Text>
 						</View>
 						<View style={styles.titlecontainer5}>
 							<Text>Biaya Admin</Text>
