@@ -21,7 +21,7 @@ const RiwayatScreen = ({ navigation }) => {
 
 	const read = async () => {
 		try {
-			const response = await axios.get("http://192.168.0.154:3000/bank");
+			const response = await axios.get("http://192.168.1.138:3000/bank");
 			console.log("Response Data:", response.data); // Debugging log
 			setRiwayats(response.data);
 		} catch (error) {

@@ -12,6 +12,10 @@ import {
 } from "react-native";
 import axios from "axios";
 import TransaksiModal from "../Modal/TransaksiModal";
+import {
+	scheduleNotification,
+	requestPermissions,
+} from "../Modal/notifications";
 
 const InputScreen = ({ navigation }) => {
 	const [nama, setNama] = useState("");
@@ -20,6 +24,11 @@ const InputScreen = ({ navigation }) => {
 	const [btn, setBtn] = useState("Simpan");
 	const [modalVisible, setModalVisible] = useState(false);
 	const [refreshing, setRefreshing] = useState(false);
+
+	// Request notification permissions when the component mounts
+	useEffect(() => {
+		requestPermissions(); // Added this line
+	}, []);
 
 	const closeModal = () => {
 		setModalVisible(false);
@@ -37,7 +46,7 @@ const InputScreen = ({ navigation }) => {
 		};
 		if (btn === "Simpan") {
 			axios
-				.post("http://192.168.0.154:3000/bank", data)
+				.post("http://192.168.1.138:3000/bank", data)
 				.then((response) => {
 					const responseData = response.data;
 
@@ -56,6 +65,9 @@ const InputScreen = ({ navigation }) => {
 					setNama(namaModal);
 					setNoRekening(noRekeningModal);
 					setNominal(nominalModal);
+
+					// Schedule a notification on successful submission
+					scheduleNotification("Success", "Transfer Berhasil!");
 
 					onRefresh();
 				})
