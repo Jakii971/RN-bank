@@ -46,7 +46,7 @@ const InputScreen = ({ navigation }) => {
 		};
 		if (btn === "Simpan") {
 			axios
-				.post("http://192.168.1.138:3000/bank", data)
+				.post("http://192.168.0.100:7245/api/Riwayat", data)
 				.then((response) => {
 					const responseData = response.data;
 

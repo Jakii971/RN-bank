@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Riwayat">
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="InputScreen" component={InputScreen} />
         <Stack.Screen name="Riwayat" component={RiwayatScreen} />

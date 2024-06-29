@@ -21,9 +21,9 @@ const RiwayatScreen = ({ navigation }) => {
 
 	const read = async () => {
 		try {
-			const response = await axios.get("http://192.168.1.138:3000/bank");
+			const response = await axios.get("http://192.168.0.100:7245/api/Riwayat");
 			console.log("Response Data:", response.data); // Debugging log
-			setRiwayats(response.data);
+			setRiwayats(response.data.data);
 		} catch (error) {
 			console.error("Error fetching data:", error);
 			Alert.alert("Error", "Failed to fetch data from the server");
@@ -55,7 +55,6 @@ const RiwayatScreen = ({ navigation }) => {
 				{riwayats.length > 0 ? (
 					riwayats.map((riwayat) => (
 						<Riwayat
-							key={riwayat.id}
 							nama={riwayat.nama}
 							noRekening={riwayat.noRekening}
 							nominal={riwayat.nominal}
