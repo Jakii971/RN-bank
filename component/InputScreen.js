@@ -24,6 +24,7 @@ const InputScreen = ({ navigation }) => {
 	const [btn, setBtn] = useState("Simpan");
 	const [modalVisible, setModalVisible] = useState(false);
 	const [refreshing, setRefreshing] = useState(false);
+	const [historys, setHistorys] = useState([]);
 
 	// Request notification permissions when the component mounts
 	useEffect(() => {
@@ -46,25 +47,14 @@ const InputScreen = ({ navigation }) => {
 		};
 		if (btn === "Simpan") {
 			axios
-				.post("http://192.168.0.100:7245/api/Riwayat", data)
+				.post("http://192.168.0.154:7245/api/Riwayat", data)
 				.then((response) => {
 					const responseData = response.data;
 
-					const namaModal = responseData.nama;
-					const noRekeningModal = responseData.noRekening;
-					const nominalModal = responseData.nominal;
-
-					console.log(
-						"nama= " + namaModal,
-						"noRekening= " + noRekeningModal,
-						"nominal= " + nominalModal
-					);
+					console.log("Response Data:", response.data);
+					setHistorys(response.data.data);
 
 					setModalVisible(true);
-
-					setNama(namaModal);
-					setNoRekening(noRekeningModal);
-					setNominal(nominalModal);
 
 					// Schedule a notification on successful submission
 					scheduleNotification("Success", "Transfer Berhasil!");
@@ -122,9 +112,9 @@ const InputScreen = ({ navigation }) => {
 						navigation={navigation}
 						visible={modalVisible}
 						closeModal={closeModal}
-						namaModall={nama}
-						noRekeningModall={noRekening}
-						nominalModall={nominal}
+						namaModal={nama}
+						noRekeningModal={noRekening}
+						nominalModal={nominal}
 					/>
 				</View>
 			</ScrollView>
