@@ -22,7 +22,7 @@ const RiwayatScreen = ({ navigation }) => {
 	const read = async () => {
 		try {
 			const response = await axios.get("http://192.168.0.154:7245/api/Riwayat");
-			console.log("Response Data:", response.data); // Debugging log
+			console.log("Response Data:", response.data.data); // Debugging log
 			setRiwayats(response.data.data);
 		} catch (error) {
 			console.error("Error fetching data:", error);

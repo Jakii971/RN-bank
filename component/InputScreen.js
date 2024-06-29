@@ -11,6 +11,7 @@ import {
 	ScrollView,
 } from "react-native";
 import axios from "axios";
+import { useFocusEffect } from '@react-navigation/native';
 import TransaksiModal from "../Modal/TransaksiModal";
 import {
 	scheduleNotification,
@@ -28,15 +29,33 @@ const InputScreen = ({ navigation }) => {
 
 	// Request notification permissions when the component mounts
 	useEffect(() => {
-		requestPermissions(); // Added this line
+		requestPermissions();
+		console.log('Component mounted');
 	}, []);
+
+	useFocusEffect(
+		React.useCallback(() => {
+			// Reset the input fields whenever the screen is focused
+			resetInput();
+		}, [])
+	);
 
 	const closeModal = () => {
 		setModalVisible(false);
 	};
 
+	const resetInput = () => {
+		setNama("");
+		setNoRekening("");
+		setNominal("");
+	}
+
 	const onRefresh = () => {
-		setRefreshing(false);
+		setRefreshing(true);
+		resetInput();
+		setTimeout(() => {
+			setRefreshing(false);
+		}, 1500);
 	};
 
 	const submit = () => {
@@ -58,8 +77,6 @@ const InputScreen = ({ navigation }) => {
 
 					// Schedule a notification on successful submission
 					scheduleNotification("Success", "Transfer Berhasil!");
-
-					onRefresh();
 				})
 				.catch((error) => console.error("Gagal mengirim data:", error));
 		}
@@ -103,6 +120,7 @@ const InputScreen = ({ navigation }) => {
 						placeholder="Masukkan nominal"
 						value={nominal}
 						onChangeText={(value) => setNominal(value)}
+						keyboardType="numeric"
 					/>
 					<TouchableOpacity style={styles.button} onPress={submit}>
 						<Text style={styles.buttonText}>{btn}</Text>
