@@ -6,10 +6,13 @@ import {
 	Text,
 	StyleSheet,
 	TouchableOpacity,
-	ImageBackground
+	ImageBackground,
+	Image
 } from "react-native";
 
-const image = require('../assets/cover.jpg');
+const imageBg = require('../assets/cover.jpg');
+const imgLogo = require('../assets/bank.png');
+const imgPanah = require('../assets/panah.png');
 
 const HomeScreen = ({ navigation }) => {
 
@@ -21,17 +24,20 @@ const HomeScreen = ({ navigation }) => {
 
 	return (
 		<SafeAreaProvider>
-			<ImageBackground source={image} style={styles.image}>
+			<ImageBackground source={imageBg} style={styles.imageBg}>
 				<View style={{ flex: 1, paddingTop: insets.top }}>
 					<View style={styles.container}>
-						<View style={styles.containerBtn}>
-							<View style={{ margin: 'auto' }}>
-								<Text style={{ textAlign: 'center', fontSize: 14, }}>Ayo Berbagi menggunakan Bank Kek</Text>
-							</View>
+						<View style={{alignItems: 'center'}}>
+							<Image source={imgLogo} style={{width: 110, height: 110}} />
+						</View>
+						<View style={{marginVertical: 100}}>
+							<Text style={{ textAlign: 'center', fontSize: 50, fontWeight: 'bold', color: 'white' }}>Welcome to Bankkek Bank</Text>
+						</View>
+						<View style={{alignItems: 'center'}}>
 							<TouchableOpacity
 								style={styles.button}
 								onPress={navigateToInputScreen}>
-								<Text style={styles.buttonText}>Tranfer</Text>
+								<Image source={imgPanah} style={{width: 50, height: 50}}></Image>
 							</TouchableOpacity>
 						</View>
 					</View>
@@ -46,18 +52,21 @@ const styles = StyleSheet.create({
 		height: 930,
 		width: 450,
     margin: 'auto',
+		paddingVertical: 100,
+		paddingHorizontal: 60,
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
     borderRadius: 10,
     shadowColor: "#000",
-	},
-	containerBtn:{
-		height: 350, width: 200, margin: 'auto'
+		justifyContent: 'center',
+		alignContent: 'center',
 	},
 	button: {
-		margin: 'auto',
-		backgroundColor: "#008000",
+		backgroundColor: 'rgba(255, 255, 255, 0.3)',
 		padding: 10,
-		borderRadius: 5,
+		width: 80,
+		height: 80,
+		borderRadius: 50,
+		justifyContent: 'center',
 		alignItems: "center",
 	},
 	buttonText: {
@@ -70,7 +79,7 @@ const styles = StyleSheet.create({
 		fontSize: 16,
 		color: "#6c757d",
 	},
-	image: {
+	imageBg: {
     flex: 1,
     resizeMode: 'cover',
     justifyContent: 'center',

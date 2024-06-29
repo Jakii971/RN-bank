@@ -1,66 +1,105 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Text, TextInput, Button } from "react-native";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, View, Text, TextInput, Button, ImageBackground, TouchableOpacity } from "react-native";
+import {
+	scheduleNotification,
+	requestPermissions,
+} from "../Modal/notifications";
+
+const imageBg = require('../assets/cover.jpg');
 
 const LoginScreen = ({ navigation }) => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 
+	useEffect(() => {
+		requestPermissions();
+	}, []);
+
 	const handleLogin = () => {
 		if (username === "user" && password === "user") {
 			navigation.navigate("Home");
+			scheduleNotification("Success", "Login Berhasil!");
 		} else {
 			alert("Username atau password salah");
 		}
 	};
 
 	return (
-		<View style={styles.container}>
-			<Text style={styles.title}>Login dulu Mank</Text>
+		<ImageBackground source={imageBg} style={styles.imageBg}>
+			<View style={styles.container}>
+				<Text style={styles.title}>Login</Text>
 
-			<TextInput
-				style={styles.input}
-				placeholder="Username"
-				onChangeText={(text) => setUsername(text)}
-				value={username}
-			/>
+				<View style={styles.containerInput}>
+					<TextInput
+						style={{marginBottom: 15, width: 300,
+							padding: 10,
+							borderWidth: 1,
+							borderColor: "#ccc",}}
+						placeholder="Username"
+						onChangeText={(text) => setUsername(text)}
+						value={username}
+					/>
 
-			<TextInput
-				style={styles.input}
-				placeholder="Password"
-				secureTextEntry={true}
-				onChangeText={(text) => setPassword(text)}
-				value={password}
-			/>
+					<TextInput
+						style={{marginTop: 15, width: 300,
+							padding: 10,
+							borderWidth: 1,
+							borderColor: "#ccc",}}
+						placeholder="Password"
+						secureTextEntry={true}
+						onChangeText={(text) => setPassword(text)}
+						value={password}
+					/>
+				</View>
 
-			<Button title="Login" style={styles.button} onPress={handleLogin} />
-		</View>
+				<View>
+					<TouchableOpacity title="Login" onPress={handleLogin} style={styles.button} ><Text style={{color: '#fff', fontSize: 16}}>Login</Text></TouchableOpacity>
+				</View>
+			</View>
+		</ImageBackground>
 	);
 };
 
 const styles = StyleSheet.create({
+	imageBg: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+  },
 	container: {
 		flex: 1,
-		backgroundColor: "#fff",
+		backgroundColor: 'rgba(255, 255, 255, 0.3)',
 		alignItems: "center",
 		justifyContent: "center",
-		padding: 20,
+		margin: 20,
+		marginBottom: 50,
+		marginTop: 95,
+		borderRadius: 20,
+	},
+	containerInput:{
+		backgroundColor: '#fff',
+		padding: 45,
+		borderRadius: 20,
+		marginVertical: 30,
 	},
 	title: {
-		fontSize: 24,
+		fontSize: 50,
 		fontWeight: "bold",
-		marginBottom: 20,
+		color: "white",
+		marginBottom: 50,
 	},
 	input: {
 		width: 300,
 		padding: 10,
 		borderWidth: 1,
 		borderColor: "#ccc",
-		marginBottom: 10,
+		marginBottom: 20,
 	},
 	button: {
 		backgroundColor: "#007bff",
-		color: "#fff",
-		padding: 10,
+		paddingHorizontal: 20,
+		paddingVertical: 10,
+		borderRadius: 8,
 	},
 });
 
