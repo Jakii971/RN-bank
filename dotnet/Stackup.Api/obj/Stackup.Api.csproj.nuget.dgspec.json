@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\UT School\\DAY-31_32 RN Firebase\\Raect-Native-Project111\\dotnet\\Stackup.Api\\Stackup.Api.csproj": {}
+    "K:\\Tugas it Programer Batc 6\\Pengenalan React Native\\Pengenalan React Native\\Day 6\\project\\Raect-Native-Project111\\dotnet\\Stackup.Api\\Stackup.Api.csproj": {}
   },
   "projects": {
-    "E:\\UT School\\DAY-31_32 RN Firebase\\Raect-Native-Project111\\dotnet\\Stackup.Api\\Stackup.Api.csproj": {
+    "K:\\Tugas it Programer Batc 6\\Pengenalan React Native\\Pengenalan React Native\\Day 6\\project\\Raect-Native-Project111\\dotnet\\Stackup.Api\\Stackup.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\UT School\\DAY-31_32 RN Firebase\\Raect-Native-Project111\\dotnet\\Stackup.Api\\Stackup.Api.csproj",
+        "projectUniqueName": "K:\\Tugas it Programer Batc 6\\Pengenalan React Native\\Pengenalan React Native\\Day 6\\project\\Raect-Native-Project111\\dotnet\\Stackup.Api\\Stackup.Api.csproj",
         "projectName": "Stackup.Api",
-        "projectPath": "E:\\UT School\\DAY-31_32 RN Firebase\\Raect-Native-Project111\\dotnet\\Stackup.Api\\Stackup.Api.csproj",
-        "packagesPath": "C:\\Users\\jaki\\.nuget\\packages\\",
-        "outputPath": "E:\\UT School\\DAY-31_32 RN Firebase\\Raect-Native-Project111\\dotnet\\Stackup.Api\\obj\\",
+        "projectPath": "K:\\Tugas it Programer Batc 6\\Pengenalan React Native\\Pengenalan React Native\\Day 6\\project\\Raect-Native-Project111\\dotnet\\Stackup.Api\\Stackup.Api.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "K:\\Tugas it Programer Batc 6\\Pengenalan React Native\\Pengenalan React Native\\Day 6\\project\\Raect-Native-Project111\\dotnet\\Stackup.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jaki\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"

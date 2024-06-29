@@ -28,10 +28,10 @@ const HomeScreen = ({ navigation }) => {
 				<View style={{ flex: 1, paddingTop: insets.top }}>
 					<View style={styles.container}>
 						<View style={{alignItems: 'center'}}>
-							<Image source={imgLogo} style={{width: 110, height: 110}} />
+							<Image source={imgLogo} style={{width: 200, height: 200}} />
 						</View>
-						<View style={{marginVertical: 100}}>
-							<Text style={{ textAlign: 'center', fontSize: 50, fontWeight: 'bold', color: 'white' }}>Welcome to Bankkek Bank</Text>
+						<View style={{paddingBottom:90,}}>
+							<Text style={{ textAlign: 'center', fontSize: 50, fontWeight: 'bold', color: 'white' }}>Welcome to Bankkek</Text>
 						</View>
 						<View style={{alignItems: 'center'}}>
 							<TouchableOpacity
@@ -52,13 +52,12 @@ const styles = StyleSheet.create({
 		height: 930,
 		width: 450,
     margin: 'auto',
-		paddingVertical: 100,
-		paddingHorizontal: 60,
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
     borderRadius: 10,
     shadowColor: "#000",
 		justifyContent: 'center',
 		alignContent: 'center',
+		paddingRight:40,
 	},
 	button: {
 		backgroundColor: 'rgba(255, 255, 255, 0.3)',

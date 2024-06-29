@@ -16,7 +16,7 @@ const App = () => {
       <Drawer.Navigator initialRouteName="Login">
         <Drawer.Screen name="Logout" component={LoginScreen} options={{ headerShown: false }} />
         <Drawer.Screen name="Home" component={HomeScreen} options={{ title: 'Home', headerShown: false }} />
-        <Drawer.Screen name="InputScreen" component={InputScreen} options={{ title: 'Input' }} />
+        <Drawer.Screen name="InputScreen" component={InputScreen} options={{ title: 'Transfer' }} />
         <Drawer.Screen name="Riwayat" component={RiwayatScreen} options={{ title: 'Riwayat Transaksi' }} />
       </Drawer.Navigator>
     </NavigationContainer>

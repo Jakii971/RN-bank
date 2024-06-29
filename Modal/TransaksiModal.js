@@ -1,6 +1,8 @@
 import React from "react";
-import { View, Text, StyleSheet, Button, Image, Modal } from "react-native";
+import { View, Text, StyleSheet, Button, Image, Modal,ImageBackground, } from "react-native";
 import axios from "axios";
+
+const imageBg = require('../../Raect-Native-Project111/assets/cover.jpg');
 
 export default function TransaksiModal({ navigation, visible, closeModal, namaModal, noRekeningModal, nominalModal }) {
 	return (
@@ -10,6 +12,7 @@ export default function TransaksiModal({ navigation, visible, closeModal, namaMo
 			visible={visible}
 			onRequestClose={closeModal}
 		>
+			<ImageBackground source={imageBg} style={styles.imageBg}>
 			<View style={styles.container}>
 				<Image
 					style={styles.briLogo}
@@ -28,11 +31,11 @@ export default function TransaksiModal({ navigation, visible, closeModal, namaMo
 							<Text style={styles.title2}>{noRekeningModal} </Text>
 						</View>
 						<View style={styles.sumber}>
-							<Text>Sumber Dana </Text>
+							<Text titlesumber>Sumber Dana : </Text>
 							<Text>{noRekeningModal} </Text>
 						</View>
 						<View style={styles.tujuan}>
-							<Text>Tujuan</Text>
+							<Text titletujuan>Tujuan Transfer :</Text>
 							<Text>{namaModal}</Text>
 						</View>
 						<View style={styles.line} />
@@ -64,6 +67,7 @@ export default function TransaksiModal({ navigation, visible, closeModal, namaMo
 					color="#007bff"
 				/>
 			</View>
+			</ImageBackground>
 		</Modal>
 	);
 }
@@ -73,12 +77,12 @@ const styles = StyleSheet.create({
 
 		justifyContent: "center",
 		alignItems: "center",
-		padding: 2,
+		padding:20,
 		backgroundColor: "#fff",
 	},
 
 	header: {
-		marginTop: 2,
+		marginTop: 10,
 		flexDirection: "column",
 		justifyContent: "center",
 		alignItems: "center",
@@ -118,10 +122,10 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 	},
 	title2: {
-		paddingLeft: 247,
+		paddingLeft: 190,
 	},
 	title5: {
-		paddingLeft: 219,
+		paddingLeft: 200,
 	},
 
 	title: {
@@ -144,29 +148,32 @@ const styles = StyleSheet.create({
 	},
 	sumber: {
 		width: 330,
-		height: 100,
+		height: 70,
 		backgroundColor: "#ffffff",
 		borderRadius: 10,
-		paddingTop: 10,
+		paddingTop: 15,
 		paddingLeft: 10,
 		shadowColor: "#000",
 		shadowOpacity: 0.1,
 		shadowRadius: 5,
 		elevation: 5,
-		marginBottom: 20,
+		marginBottom: 10,
+		
 	},
 	tujuan: {
 		width: 330,
-		height: 100,
+		height: 70,
 		backgroundColor: "#ffffff",
 		borderRadius: 10,
-		paddingTop: 10,
+		paddingTop: 15,
 		paddingLeft: 10,
-		shadowColor: "#000",
+		shadowColor: "black",
 		shadowOpacity: 0.1,
 		shadowRadius: 5,
 		elevation: 5,
 		marginBottom: 20,
+		
+		
 	},
 	line: {
 		width: 320,
